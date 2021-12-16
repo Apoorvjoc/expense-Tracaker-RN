@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+ vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
+        vector<vector<int>> res(c , vector<int>(r , 0));
+        int row = mat.size();
+        int col = mat[0].size();
+        if(r == row && c == col){
+            return mat;
+        }
+        if(c == row*col){
+            vector<vector<int>> res(1 , vector<int>(row*col,0));
+            int x = 0;
+            for(int i = 0 ; i<row ; i++){
+                for(int j = 0 ; j<col ; j++){
+                    res[0][x++] = mat[i][j];
+                }
+            }
+            return res;
+        }
+         if(r == row*col){
+            vector<vector<int>> res(row*col , vector<int>(1,0));
+            int x = 0;
+            for(int i = 0 ; i<row ; i++){
+                for(int j = 0 ; j<col ; j++){
+                    res[x++][0] = mat[i][j];
+                }
+            }
+            return res;
+        }
+        return res;
+}
+
+int main() {
+     int N;cin>>N;
+    vector<vector<int>>v;
+    for(int i = 0 ; i<N;i++){
+        int n;cin>>n;
+        vector<int>temp;
+        for(int j = 0 ; j<n ; j++){
+            int elem;cin>>elem;
+            temp.push_back(elem);
+        }
+        v.push_back(temp);
+    }
+    vector<vector<int>> ans = matrixReshape(v , 4 , 1);
+    for(int i = 0 ; i<ans.size() ; i++){
+        for(int j = 0 ; j<ans[i].size() ; j++){
+            cout<<ans[i][j]<<",";
+        }
+        cout<<endl;
+    }
+}

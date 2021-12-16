@@ -1,0 +1,13 @@
+int heightChecker(vector<int>& heights) {
+        int cnt = 0; 
+        vector<int>sortedArr = heights;
+
+        if(heights.size() == 0)
+            return 0;
+
+        sort(sortedArr.begin(), sortedArr.end());
+        for(int i = 0 ; i<heights.size() ; i++){
+            if(sortedArr[i] != heights[i])cnt++;   
+        }
+    return cnt;
+    }

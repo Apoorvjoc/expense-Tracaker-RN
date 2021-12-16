@@ -1,0 +1,29 @@
+void hour(int num)
+{
+    for (int i = 0; i < 12; ++i)
+    {
+        bitset<8> t(i);
+        if(t.count() > num) continue;
+        string s = to_string(i)+":";
+        min(s,num-t.count());
+    }
+}
+
+void min(string s, int num)
+{
+    for (int i = 0; i <= 59; ++i)
+    {
+        bitset<16> t(i);
+        
+        if(t.count() == num)
+        {
+            if(i < 10) 
+            {
+                res.push_back(s +"0"+to_string(i));
+            }
+            else
+                res.push_back(s + to_string(i));
+        }
+        
+    }
+}

@@ -1,0 +1,11 @@
+int maximumWealth(vector<vector<int>>& accounts) {
+        int ans = INT_MIN ,currAns =0;
+        for(int i = 0 ; i<accounts.size();i++){
+            currAns = 0;
+            for(int j = 0 ; j<accounts[i].size();j++){
+                currAns += accounts[i][j];
+            }
+            ans = max(ans , currAns);
+        }
+        return ans;
+    }

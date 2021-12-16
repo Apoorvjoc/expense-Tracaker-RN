@@ -1,0 +1,17 @@
+void reverse(vector<vector<int>>& image , int s , int e , int i){
+    while(s<=e)
+    {
+        swap(image[i][s],image[i][e]);
+        s++,e--;
+    }
+}
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
+        int col = image[0].size();
+        for(int i = 0 ; i<image.size(); i++){
+            reverse(image , 0 , col-1 ,i);
+            for(int j = 0 ; j<image[0].size();j++){
+                image[i][j] = image[i][j]^1;
+            }
+        }
+        return image;
+    }

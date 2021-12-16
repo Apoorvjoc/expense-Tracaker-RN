@@ -1,0 +1,108 @@
+  int arrayPairSum(vector<int>& nums) {
+        sort(nums.begin() , nums.end());
+        int ans = 0;
+        for(int i = 0 ; i<nums.size() ; i++){
+            if(i%2==0)
+                ans = ans + nums[i];
+        }
+        return ans;
+    }
+
+
+
+// dead lock
+[10:38 AM] Sushant Chamoli
+    class A1 implements Runnable
+{​​​
+Emp e;
+Student s;
+A1(Emp e1, Student s1)
+{​​​
+e = e1;
+s = s1;
+}​​​
+public void run()
+{​​​
+synchronized(e)
+{​​​
+System.out.println("T1 has got lock for Emp....");
+try {​​​
+Thread.sleep(100);
+}​​​ catch (InterruptedException e1) {​​​
+e1.printStackTrace();
+}​​​
+synchronized(s)
+{​​​
+System.out.println("T1 has got lock for Student....");
+try {​​​
+Thread.sleep(100);
+}​​​ catch (InterruptedException e1) {​​​
+e1.printStackTrace();
+}​​​
+}​​​
+}​​​
+}​​​
+}​​​
+
+class A2 implements Runnable
+{​​​
+Emp e;
+Student s;
+A2(Emp e1, Student s1)
+{​​​
+e = e1;
+s = s1;
+}​​​
+public void run()
+{​​​
+synchronized(s)
+{​​​
+System.out.println("T2 has got lock for Student....");
+try {​​​
+Thread.sleep(100);
+}​​​ catch (InterruptedException e1) {​​​
+e1.printStackTrace();
+}​​​
+synchronized(e)
+{​​​
+System.out.println("T2 has got lock for Emp....");
+try {​​​
+Thread.sleep(100);
+}​​​ catch (InterruptedException e1) {​​​
+e1.printStackTrace();
+}​​​
+}​​​
+}​​​
+}​​​
+}​​​
+class Emp
+{​​​
+int salary;
+String nm;
+void getSal()
+{​​​
+System.out.println("Salary::"+salary);
+}​​​
+}​​​
+class Student
+{​​​
+int age;
+String nm;
+void study()
+{​​​
+System.out.println("I am studying Java..");
+}​​​
+}​​​
+
+public class deadlock1 {​​​
+ public static void main(String[] args) {​​​
+ Emp e1 = new Emp();
+Student s1 = new Student();
+A1 obj1 = new A1(e1,s1);
+A2 obj2 = new A2(e1,s1);
+Thread t1 = new Thread(obj1);
+Thread t2 = new Thread(obj2);
+t1.start();
+t2.start();
+}​​​
+}​​​
