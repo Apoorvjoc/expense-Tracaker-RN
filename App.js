@@ -1,13 +1,13 @@
 import React , {useState , useEffect} from 'react';
 import { StyleSheet, Text, View , FlatList} from "react-native";
-import ExpenseItem from './components/ExpenseItem';
+import ExpenseItem from './Components/ExpenseItem';
 import IncomeItem from './Components/IncomeItem';
 import Input from './Components/Input';
 
 export default function App() {
 
-   const [exp, setExp] = useState();
-   const [inc, setInc] = useState();
+  const [exp, setExp] = useState();
+  const [inc, setInc] = useState();
   const [storeExpense, setStoreExpense] = useState([]);
   const [storeIncome, setStoreIncome] = useState([]);
 
@@ -27,23 +27,27 @@ export default function App() {
   };
   
    useEffect(() => {
-     let currExp = 0,
-       currInc = 0;
-     storeExpense.forEach((obj) => {
-       currExp = Number(currExp) + Number(obj.amt);
-     });
-     setExp(currExp);
-     storeIncome.forEach((obj) => {
-       currInc = Number(currInc) + Number(obj.amt);
-     });
-     setInc(currInc);
+      
+    let currExp = 0,currInc = 0;
+    storeExpense.forEach((obj) => {
+      currExp = Number(currExp) + Number(obj.amt);
+    });
+    setExp(currExp);
+    storeIncome.forEach((obj) => {
+      currInc = Number(currInc) + Number(obj.amt);
+    });
+    setInc(currInc);
+      
    });
 
   return (
     <View style={styles.container}>
       <Text>-----------EXPENSE TRACKER------------</Text>
-      <Text>Total Income:{inc - exp} </Text>
-      <Text>Total Expendature:{exp} </Text>
+      
+        <View>
+          <Text>Amount Left :{inc - exp} </Text>
+          <Text>Total Expendature:{exp} </Text>
+        </View>
 
       <Input funcAsPropsExp={handleExpense} funcAsPropsInc={handleIncome} />
 
