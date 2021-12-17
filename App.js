@@ -1,5 +1,7 @@
 import React , {useState , useEffect} from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import { StyleSheet, Text, View, Button, TextInput , ScrollView  , FlatList} from "react-native";
+import ExpenseItem from './components/ExpenseItem';
+import IncomeItem from './Components/IncomeItem';
 
 export default function App() {
   const [exp, setExp] = useState();
@@ -44,8 +46,6 @@ export default function App() {
       setInc(currInc);
   })
 
-
-
   return (
     <View style={styles.container}>
       <Text>-----------EXPENSE TRACKER------------</Text>
@@ -67,24 +67,19 @@ export default function App() {
         <Button title="Income" onPress={handleIncome} />
       </View>
 
-      <View>
-        <Text>.......EXPENSE....</Text>
-        {storeExpense.map((d, idx) => (
-          <Text key={idx}>
-            {d.desc}
-            {d.amt}
-          </Text>
-        ))}
-      </View>
-      <View>
-        <Text>.......Income....</Text>
-        {storeIncome.map((d, idx) => (
-          <Text key={idx}>
-            {d.desc}
-            {d.amt}
-          </Text>
-        ))}
-      </View>
+      <Text>.......EXPENSE....</Text>
+      <FlatList
+        keyExtractor={(item, index) => index}
+        data={storeExpense}
+        renderItem={(itemData) => <ExpenseItem data={itemData.item}/>}
+      />
+
+      <Text>.......Income....</Text>
+      <FlatList
+        keyExtractor={(item, index) => index}
+        data={storeIncome}
+        renderItem={(itemData) => <IncomeItem data={itemData.item} /> }
+      />
     </View>
   );
 }
