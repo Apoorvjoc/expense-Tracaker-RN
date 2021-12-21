@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  KeyboardAvoidingView,
+} from "react-native";
 import ExpenseItem from "./Components/ExpenseItem.js";
 import Input from "./Components/Input.js";
 import Header from "./Components/Header.js";
@@ -45,7 +51,7 @@ export default function App() {
   });
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} keyboardVerticalOffset={30}>
       <Header />
       <View style={styles.textContainer}>
         <View style={styles.incomeContainer}>
@@ -104,24 +110,27 @@ export default function App() {
                 width: "25%",
                 textAlign: "center",
                 color: Color.header,
-                fontWeight: "900",
+                //fontWeight: "bold",
+                fontSize: 20,
               }}
             >
               Amount
             </Text>
             <Text
               style={{
-                width: "50%",
+                minWidth: "40%",
                 textAlign: "center",
                 color: Color.header,
-                fontWeight: "bold",
+                // fontWeight: "bold",
+                fontSize: 20,
               }}
             >
               Description
             </Text>
-            <View style={{ width: "25%", textAlign: "center" }}>
-              <Text style={{ color: "red" }}>Expense / </Text>
-              <Text style={{ color: "green" }}>Income </Text>
+            <View style={{ minWidth: "30%", textAlign: "center" }}>
+              <Text style={{ color: "red", minWidth: "30%" }}>
+                Expense / <Text style={{ color: "green" }}>Income </Text>
+              </Text>
             </View>
           </View>
           <FlatList
@@ -132,7 +141,7 @@ export default function App() {
         </View>
       </View>
       <Footer />
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

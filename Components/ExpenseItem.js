@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginVertical: 10,
-    // borderWidth: 10,
+    flexWrap: "wrap",
+    //borderWidth: 10,
   },
   amt: {
     color: Color.black,
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontWeight: "600",
     elevation: 5,
-    width: "20%",
+    minWidth: "20%",
   },
   desc: {
     elevation: 5,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     fontWeight: "600",
-    width: "50%",
+    minWidth: "50%",
   },
   exp: {
     elevation: 5,
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     fontWeight: "600",
-    width: "21%",
+    minWidth: "21%",
   },
   inc: {
     elevation: 5,
@@ -78,6 +79,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     fontWeight: "600",
-    width: "21%",
+    minWidth: "21%",
   },
 });
