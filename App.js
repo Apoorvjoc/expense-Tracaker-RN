@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import ExpenseItem from "./Components/ExpenseItem.js";
-import IncomeItem from "./Components/IncomeItem";
 import Input from "./Components/Input.js";
 import Header from "./Components/Header.js";
 import Color from "./constant/Color.js";
@@ -11,34 +10,36 @@ import Footer from "./Components/Footer.js";
 export default function App() {
   const [exp, setExp] = useState();
   const [inc, setInc] = useState();
-  const [storeExpense, setStoreExpense] = useState([]);
-  const [storeIncome, setStoreIncome] = useState([]);
+  // const [storeExpense, setStoreExpense] = useState([]);
+  // const [storeIncome, setStoreIncome] = useState([]);
+  const [storeItems, setStoreItems] = useState([]);
 
   const handleExpense = (amount, enteredDescription) => {
     console.log("Expense clicked!");
-    setStoreExpense((currentState) => [
+    setStoreItems((currentState) => [
       ...currentState,
-      { desc: enteredDescription, amt: amount },
+      { desc: enteredDescription, amt: amount, category: "expense" },
     ]);
   };
   const handleIncome = (amount, enteredDescription) => {
     console.log("Income clicked!");
-    setStoreIncome((currentState) => [
+    setStoreItems((currentState) => [
       ...currentState,
-      { desc: enteredDescription, amt: amount },
+      { desc: enteredDescription, amt: amount, category: "income" },
     ]);
-    // setAmount("");
   };
 
   useEffect(() => {
     let currExp = 0,
       currInc = 0;
-    storeExpense.forEach((obj) => {
-      currExp = Number(currExp) + Number(obj.amt);
+    storeItems.forEach((obj) => {
+      if (obj.category === "expense")
+        currExp = Number(currExp) + Number(obj.amt);
     });
     setExp(currExp);
-    storeIncome.forEach((obj) => {
-      currInc = Number(currInc) + Number(obj.amt);
+    storeItems.forEach((obj) => {
+      if (obj.category === "income")
+        currInc = Number(currInc) + Number(obj.amt);
     });
     setInc(currInc);
   });
@@ -51,14 +52,15 @@ export default function App() {
           <Text style={styles.amountText}>Amount Left:</Text>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: "900",
               color: Color.black,
               backgroundColor: Color.white,
-              width: "25%",
-              fontSize: 25,
+              minWidth: "30%",
+              fontSize: 20,
               textAlign: "center",
               borderRadius: 10,
               marginLeft: -20,
+              padding: 5,
             }}
           >
             {inc - exp}
@@ -68,13 +70,14 @@ export default function App() {
           <Text style={styles.expenditureText}>Expenses:</Text>
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: "900",
               color: Color.black,
               backgroundColor: Color.white,
-              width: "25%",
+              minWidth: "30%",
               textAlign: "center",
-              fontSize: 25,
+              fontSize: 20,
               borderRadius: 10,
+              padding: 5,
             }}
           >
             {exp}
@@ -86,20 +89,45 @@ export default function App() {
 
       <View style={styles.listContainer}>
         <View style={styles.expenseListContainer}>
-          <Text style={styles.expenseListText}>EXPENSE</Text>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              textAlign: "center",
+              width: "100%",
+              marginTop: 30,
+              marginBottom: 20,
+            }}
+          >
+            <Text
+              style={{
+                width: "25%",
+                textAlign: "center",
+                color: Color.header,
+                fontWeight: "900",
+              }}
+            >
+              Amount
+            </Text>
+            <Text
+              style={{
+                width: "50%",
+                textAlign: "center",
+                color: Color.header,
+                fontWeight: "bold",
+              }}
+            >
+              Description
+            </Text>
+            <View style={{ width: "25%", textAlign: "center" }}>
+              <Text style={{ color: "red" }}>Expense / </Text>
+              <Text style={{ color: "green" }}>Income </Text>
+            </View>
+          </View>
           <FlatList
             keyExtractor={(item, index) => index}
-            data={storeExpense}
+            data={storeItems}
             renderItem={(itemData) => <ExpenseItem data={itemData.item} />}
-          />
-        </View>
-
-        <View style={styles.incomeListContainer}>
-          <Text style={styles.incomeText}>INCOME</Text>
-          <FlatList
-            keyExtractor={(item, index) => index}
-            data={storeIncome}
-            renderItem={(itemData) => <IncomeItem data={itemData.item} />}
           />
         </View>
       </View>

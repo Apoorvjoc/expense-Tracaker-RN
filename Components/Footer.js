@@ -5,7 +5,7 @@ import Color from "../constant/Color";
 const Footer = () => {
   return (
     <View style={styles.footerContainer}>
-      <Text style={styles.footer}>Footer</Text>
+      {/*<Text style={styles.footer}>Footer</Text>*/}
     </View>
   );
 };

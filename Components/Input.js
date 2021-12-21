@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button } from "react-native";
 import Color from "../constant/Color";
 
-const Input = () => {
+const Input = (props) => {
   const [amount, setAmount] = useState();
   const [enteredDescription, setEnteredDescription] = useState("");
 
