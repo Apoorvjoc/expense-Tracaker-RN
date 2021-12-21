@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button } from "react-native";
+import Color from "../constant/Color";
 
-const Input = (props) => {
+const Input = () => {
   const [amount, setAmount] = useState();
   const [enteredDescription, setEnteredDescription] = useState("");
 
@@ -25,24 +26,33 @@ const Input = (props) => {
             style={styles.amount}
           />
         </View>
-        <TextInput
-          placeholder="Enter Description"
-          value={enteredDescription}
-          onChangeText={handleDescription}
-          style={styles.description}
-        />
+        <View style={styles.descriptionContainer}>
+          <TextInput
+            placeholder="Enter Description"
+            value={enteredDescription}
+            onChangeText={handleDescription}
+            style={styles.description}
+          />
+        </View>
       </View>
       <View style={styles.buttonContainer}>
-        <Button
-          title="Expense"
-          onPress={() => props.funcAsPropsExp(amount, enteredDescription)}
-          style={styles.expense}
-        />
-        <Button
-          title="Income"
-          onPress={() => props.funcAsPropsInc(amount, enteredDescription)}
-          style={styles.income}
-        />
+        <View style={styles.expense}>
+          <Button
+            title="Expense"
+            style={styles.expenseBtn}
+            color={Color.lightPurple}
+            onPress={() => props.funcAsPropsExp(amount, enteredDescription)}
+          />
+        </View>
+
+        <View style={styles.income}>
+          <Button
+            title="Income"
+            style={styles.incomeBtn}
+            color={Color.lightYellow}
+            onPress={() => props.funcAsPropsInc(amount, enteredDescription)}
+          />
+        </View>
       </View>
     </View>
   );
@@ -53,32 +63,50 @@ export default Input;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    width: "70%",
+    width: "80%",
+    marginTop: 40,
+    paddingBottom: 20,
   },
   amount: {
-    marginTop: 15,
-    borderWidth: 1,
     borderRadius: 10,
-    height: 50,
-    borderWidth: 1,
-    width: "40%",
+    backgroundColor: Color.white,
+    height: 40,
+    width: "100%",
     textAlign: "center",
+    fontSize: 17,
   },
   amountContainer: {
     alignItems: "center",
   },
-  description: {
+  descriptionContainer: {
     marginVertical: 10,
-    marginBottom: 10,
-    borderBottomWidth: 2,
+  },
+  description: {
+    borderRadius: 10,
+    backgroundColor: Color.white,
+    height: 40,
+    width: "100%",
+    textAlign: "center",
+    fontSize: 17,
   },
   buttonContainer: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
+    marginTop: 5,
   },
-  expense: {},
   income: {
-    marginLeft: 10,
+    borderWidth: 5,
+    borderColor: Color.yellow,
+    borderRadius: 10,
   },
+  expense: {
+    borderWidth: 5,
+    borderColor: Color.header,
+    borderRadius: 10,
+  },
+  // incomeBtn: {},
+  // expenseBtn: {
+  //   borderRadius: 10,
+  // },
 });
