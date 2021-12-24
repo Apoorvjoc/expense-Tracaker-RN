@@ -50,98 +50,98 @@ export default function App() {
   });
 
   return (
-    // <KeyboardAvoidingView style={styles.container} keyboardVerticalOffset={30}>
-    //   <Header />
-    //   <View style={styles.textContainer}>
-    //     <View style={styles.incomeContainer}>
-    //       <Text style={styles.amountText}>Amount Left:</Text>
-    //       <Text
-    //         style={{
-    //           fontWeight: "bold",
-    //           color: Color.black,
-    //           backgroundColor: Color.white,
-    //           minWidth: "30%",
-    //           fontSize: 20,
-    //           textAlign: "center",
-    //           borderRadius: 10,
-    //           marginLeft: -20,
-    //           padding: 5,
-    //         }}
-    //       >
-    //         {inc - exp}
-    //       </Text>
-    //     </View>
-    //     <View style={styles.expenseContainer}>
-    //       <Text style={styles.expenditureText}>Expenses:</Text>
-    //       <Text
-    //         style={{
-    //           fontWeight: "900",
-    //           color: Color.black,
-    //           backgroundColor: Color.white,
-    //           minWidth: "30%",
-    //           textAlign: "center",
-    //           fontSize: 20,
-    //           borderRadius: 10,
-    //           padding: 5,
-    //         }}
-    //       >
-    //         {exp}
-    //       </Text>
-    //     </View>
-    //   </View>
+    <KeyboardAvoidingView style={styles.container} keyboardVerticalOffset={30}>
+      <Header />
+      <View style={styles.textContainer}>
+        <View style={styles.incomeContainer}>
+          <Text style={styles.amountText}>Amount Left:</Text>
+          <Text
+            style={{
+              fontWeight: "bold",
+              color: Color.black,
+              backgroundColor: Color.white,
+              minWidth: "30%",
+              fontSize: 20,
+              textAlign: "center",
+              borderRadius: 10,
+              marginLeft: -20,
+              padding: 5,
+            }}
+          >
+            {inc - exp}
+          </Text>
+        </View>
+        <View style={styles.expenseContainer}>
+          <Text style={styles.expenditureText}>Expenses:</Text>
+          <Text
+            style={{
+              fontWeight: "900",
+              color: Color.black,
+              backgroundColor: Color.white,
+              minWidth: "30%",
+              textAlign: "center",
+              fontSize: 20,
+              borderRadius: 10,
+              padding: 5,
+            }}
+          >
+            {exp}
+          </Text>
+        </View>
+      </View>
 
-    //   <Input funcAsPropsExp={handleExpense} funcAsPropsInc={handleIncome} />
+      <Input funcAsPropsExp={handleExpense} funcAsPropsInc={handleIncome} />
 
-    //   <View style={styles.listContainer}>
-    //     <View style={styles.expenseListContainer}>
-    //       <View
-    //         style={{
-    //           display: "flex",
-    //           flexDirection: "row",
-    //           textAlign: "center",
-    //           width: "100%",
-    //           marginTop: 30,
-    //           marginBottom: 20,
-    //         }}
-    //       >
-    //         <Text
-    //           style={{
-    //             width: "25%",
-    //             textAlign: "center",
-    //             color: Color.header,
-    //             //fontWeight: "bold",
-    //             fontSize: 20,
-    //           }}
-    //         >
-    //           Amount
-    //         </Text>
-    //         <Text
-    //           style={{
-    //             minWidth: "40%",
-    //             textAlign: "center",
-    //             color: Color.header,
-    //             // fontWeight: "bold",
-    //             fontSize: 20,
-    //           }}
-    //         >
-    //           Description
-    //         </Text>
-    //         <View style={{ minWidth: "30%", textAlign: "center" }}>
-    //           <Text style={{ color: "red", minWidth: "30%" }}>
-    //             Expense / <Text style={{ color: "green" }}>Income </Text>
-    //           </Text>
-    //         </View>
-    //       </View>
-    //       <FlatList
-    //         keyExtractor={(item, index) => index}
-    //         data={storeItems}
-    //         renderItem={(itemData) => <ExpenseItem data={itemData.item} />}
-    //       />
-    //     </View>
-    //   </View>
-    //   <Footer />
-    // </KeyboardAvoidingView>
-    <Analysis />
+      <View style={styles.listContainer}>
+        <View style={styles.expenseListContainer}>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              textAlign: "center",
+              width: "100%",
+              marginTop: 30,
+              marginBottom: 20,
+            }}
+          >
+            <Text
+              style={{
+                width: "25%",
+                textAlign: "center",
+                color: Color.header,
+                //fontWeight: "bold",
+                fontSize: 20,
+              }}
+            >
+              Amount
+            </Text>
+            <Text
+              style={{
+                minWidth: "40%",
+                textAlign: "center",
+                color: Color.header,
+                // fontWeight: "bold",
+                fontSize: 20,
+              }}
+            >
+              Description
+            </Text>
+            <View style={{ minWidth: "30%", textAlign: "center" }}>
+              <Text style={{ color: "red", minWidth: "30%" }}>
+                Expense / <Text style={{ color: "green" }}>Income </Text>
+              </Text>
+            </View>
+          </View>
+          <FlatList
+            keyExtractor={(item, index) => index}
+            data={storeItems}
+            renderItem={(itemData) => <ExpenseItem data={itemData.item} />}
+          />
+        </View>
+      </View>
+      <Footer />
+    </KeyboardAvoidingView>
+    // <Analysis />
   );
 }
 
