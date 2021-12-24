@@ -33,7 +33,7 @@ const chartConfig = {
   useShadowColorFromDataset: false, // optional
 };
 
-const Analysis = () => {
+const Add = () => {
   return (
     <View style={styles.container}>
       <PieChart
@@ -51,7 +51,7 @@ const Analysis = () => {
   );
 };
 
-export default Analysis;
+export default Add;
 
 const styles = StyleSheet.create({
   container: {
